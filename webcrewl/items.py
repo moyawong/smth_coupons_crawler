@@ -8,7 +8,13 @@
 import scrapy
 
 
-class WebcrewlItem(scrapy.Item):
+class CouponItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    title = scrapy.Field()
+    href = scrapy.Field()
+    author = scrapy.Field()
+    time = scrapy.Field()
+    content = scrapy.Field()
+    dbtime = scrapy.Field()
+    base_url_index = scrapy.Field()
