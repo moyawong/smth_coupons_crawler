@@ -1,33 +1,32 @@
 # smth_coupons_crawler  #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This README would normally document whatever steps are necessary to get your webcrawl up and running.
 
 ### What is this repository for? ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+*the webcrawl is for catch amazon deals and coupon messages of newsmth.
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
 * Dependencies
+    python 2.7 + node 4.x:  
+	sudo apt-get install python2.7 python2.7-dev python-pip  
+    sudo apt-get install libxml2-dev libxml2 libxslt1.1 libxslt1-dev zlib1g-dev zlib1g phantomjs
+    pip install w3lib lxml cssselect twisted selenium bs4 pymongo  
+	pip install pydispatch pydispacher  
+	pip install scrapy  
 * Database configuration
+    apt-get install mongodb
+
 * How to run tests
+   cd webcrewl
+   scrapy crawl amz> /home/lmhj/amzlog.txt
+
 * Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
-
+* JoannaWang 14907232@qq.com
 
 
 ## Support on Beerpay
