@@ -28,6 +28,9 @@ This README would normally document whatever steps are necessary to get your web
 
 * JoannaWang 14907232@qq.com
 
+### References
+
+https://scrapy.org
 
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
