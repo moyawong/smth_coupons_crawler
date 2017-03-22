@@ -15,7 +15,7 @@ public class Application {
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(Application.class, args);
 		//
-		Document doc = Jsoup.connect("http://jsoup.org").get();
+		Document doc = Jsoup.connect(Constants.AM_BASE_URL).get();
 
 		Element link = doc.select("a").first();
 	}
