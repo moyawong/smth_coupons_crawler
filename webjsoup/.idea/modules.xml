@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webjsoup.iml" filepath="$PROJECT_DIR$/.idea/modules/webjsoup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webjsoup_main.iml" filepath="$PROJECT_DIR$/.idea/modules/webjsoup_main.iml" group="webjsoup" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webjsoup_test.iml" filepath="$PROJECT_DIR$/.idea/modules/webjsoup_test.iml" group="webjsoup" />
+    </modules>
+  </component>
+</project>
