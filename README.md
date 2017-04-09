@@ -20,7 +20,7 @@ This README would normally document whatever steps are necessary to get your web
 
 * How to run tests
    cd webcrewl
-   scrapy crawl amz> /home/lmhj/amzlog.txt
+   scrapy crawl amz> ./amzlog.txt
 
 * Deployment instructions
 
