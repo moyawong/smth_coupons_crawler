@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
+
+from time import sleep
+
 import scrapy
-from webcrewl.items import CouponItem
+from intern.items import InternItem
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,14 +12,14 @@ from bs4 import BeautifulSoup
 from scrapy import signals
 from scrapy.conf import settings
 from scrapy.xlib.pydispatch import dispatcher
-from webcrewl.platform import getPlatform
-from webcrewl.emails import send_mail
+from intern.platform import getPlatform
+from intern.emails import send_mail
 
 class amazonSpider(scrapy.spiders.CrawlSpider):
 
     name="amz"
     base_url = settings['AM_BASE_URL']
-    start_urls = [base_url]
+    start_urls = [base_url] 
 #    start_urls.extend([settings['AMZ_PAGE_URL']])
     print start_urls
     
@@ -24,7 +27,10 @@ class amazonSpider(scrapy.spiders.CrawlSpider):
 
     def __init__(self):
         scrapy.spiders.Spider.__init__(self)
-        self.driver = webdriver.PhantomJS()
+        if self.platform == 'linux':
+            self.driver = webdriver.PhantomJS()
+        elif self.platform == 'win':
+            self.driver = webdriver.PhantomJS(executable_path='F:/runtime/python/phantomjs-2.1.1-windows/bin/phantomjs.exe')
             
         self.driver.set_page_load_timeout(15)
         dispatcher.connect(self.spider_closed, signals.spider_closed)
@@ -37,31 +43,37 @@ class amazonSpider(scrapy.spiders.CrawlSpider):
         self.driver.get(response.url)
         print response.url
         
-#         try:
-#             
-#             element = WebDriverWait(self.driver,30).until(
-#                 EC.presence_of_all_elements_located((By.ID, 'widgetContent'))
-#             )
-#             print 'element:\n', element
-#         except Exception, e:
-#             print Exception, ":", e
-#             print "wait failed"
-
-        self.driver.implicitly_wait(20)
-        myelement = self.driver.find_element_by_id("widgetContent")
-        print("element = ", myelement)
+        try:
+            elements = WebDriverWait(self.driver,30).until(
+                EC.presence_of_all_elements_located((By.ID, 'widgetContent'))
+            )
+            print 'elements:\n', elements
+        except Exception, e:
+            print Exception, ":", e
+            print "wait failed"
             
+        print("step 1 ============================")
         page_source = self.driver.page_source
         bs_obj = BeautifulSoup(page_source, "lxml")
         print bs_obj
-
-#        table = bs_obj.find('table',class_='board-list tiz')
-#        print table
+        
+        print("step 2 ============================")
+        widget = bs_obj.find(id='widgetContent',)
+        print widget
+        
+        try:
+            elements = WebDriverWait(self.driver,30).until(
+                     EC.presence_of_all_elements_located((By.ID, 'dealTitle'))
+            )
+            print 'element:\n', elements
+        except Exception, e:
+            print Exception, ":", e
+            print "wait failed"
         
         print "find message ====================================\n"
-        coupon_messages = bs_obj.find_all('span', class_='a-declarative')
+        intern_messages = bs_obj.find_all('span', id='dealTitle')
         count = 0
-        for message in coupon_messages:
+        for message in intern_messages:
             print("messages = %s"%message)
             count += 1
             
