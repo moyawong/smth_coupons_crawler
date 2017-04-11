@@ -11,8 +11,8 @@
 
 BOT_NAME = 'coupons'
 
-SPIDER_MODULES = ['intern.spiders']
-NEWSPIDER_MODULE = 'intern.spiders'
+SPIDER_MODULES = ['webcrewl.spiders']
+NEWSPIDER_MODULE = 'webcrewl.spiders'
 
 ROOT_URL = 'http://www.newsmth.net'
 BASE_URL = 'http://www.newsmth.net/nForum/board/CouponsLife'
